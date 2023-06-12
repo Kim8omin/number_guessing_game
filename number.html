@@ -30,7 +30,27 @@
     }
 
     console.log(answer);
-    console.log(numbers);
+    
+    const tries =[];
+    function checkInput(input){
+        if(input.length!==4) {
+            return alert('please enter the four digit number');
+        }
+        if(new Set(input).size !==4) {
+            return alert ('please enter four each unique number,ensuring that each number is unique.');
+        }
+        if (tries.includes(input)) {
+            return alert('you already tried this number before.');
+        }
+        return true;
+    }
+    $form.addEventListener('submit', (event)=> {
+        event.preventDefault();
+        const value=$input.value;
+        $input.value='';
+        const valid=checkInput(value);
+    });
+    
 
 
 
