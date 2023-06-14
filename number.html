@@ -44,11 +44,26 @@
         }
         return true;
     }
+    
     $form.addEventListener('submit', (event)=> {
         event.preventDefault();
         const value=$input.value;
         $input.value='';
         const valid=checkInput(value);
+        if (!valid) return;
+        console.log(value);
+        console.log('Attemp:',tries.length +1);
+        tries.push(value);
+        if (answer.join('')===value) {
+            $logs.textContent = '홈런!';
+            return;
+        }
+        if (tries.length >=9) {
+            const message= document.createTextNode(`sorry ! the answer is ${answer.join('')}`);
+            $logs.appendChild(message);
+            return;
+        }
+
     });
     
 
